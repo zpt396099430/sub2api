@@ -7,7 +7,7 @@
 - 共同基线：`98d86915becae9fe9491a91ffc6defd5235c8d2b`（官方 VERSION 同步至 0.2.4）。
 - 合并前二开：`15b9ddeccd23f238ecae2e2c7e3ac3af3efc2a6e`，回退分支 `codex/pre-merge-025`。
 - 合入官方：`86f93c28ee34cc74b629dafb748bd5ac5ca8c5ea`（正式 `v0.2.5` 标签解引用提交）。
-- 二开维护分支：`codex/custom-on-v0.2.4`。名称保留基线版本，合并后的代码版本为 0.2.5。
+- 合并分支：`codex/custom-on-v0.2.4`。该分支名称保留原始基线版本，合并后的代码版本为 0.2.5；第 5 步另建 `codex/custom-on-v0.2.5` 作为维护入口。
 - 不包含官方 0.2.5 发布后的功能提交。标签中的 VERSION 仍是 0.2.4，此次显式同步为 0.2.5。
 
 ## 冲突处理
