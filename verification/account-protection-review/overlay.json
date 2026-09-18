@@ -1,0 +1,6 @@
+{
+  "Replace": {
+    "C:/Users/30214/Desktop/sub2本地/sub2新站/backend/internal/service/protection_review_external_test.go": "C:/Users/30214/Desktop/sub2本地/sub2新站/verification/account-protection-review/protection_review_test.go.txt",
+    "C:/Users/30214/Desktop/sub2本地/sub2新站/backend/internal/repository/protection_review_external_test.go": "C:/Users/30214/Desktop/sub2本地/sub2新站/verification/account-protection-review/repository_review_test.go.txt"
+  }
+}

@@ -1,0 +1,52 @@
+package service
+
+import (
+ "bytes"
+ "context"
+ "io"
+ "net/http"
+ "net/http/httptest"
+ "strings"
+ "testing"
+
+ "github.com/Wei-Shaw/sub2api/internal/config"
+ "github.com/gin-gonic/gin"
+ "github.com/stretchr/testify/require"
+)
+
+// Reproduces the reported compatibility failure through the unmodified upgrade
+// Forward path. The recorder proves whether an upstream request was attempted.
+func TestReproduceUpgradeMode1CompatibilityRegression(t *testing.T) {
+ gin.SetMode(gin.TestMode)
+ for _, tc := range []struct{name, body string}{
+  {"string_input", `{"model":"gpt-5.2","input":"Return OK","stream":true}`},
+  {"token_budget", `{"model":"gpt-5.2","input":[{"role":"user","content":[{"type":"input_text","text":"Return OK"}]}],"max_output_tokens":100,"stream":true}`},
+ } {
+  for _, enabled := range []bool{false,true} {
+   state := "off"; if enabled { state = "on" }
+   t.Run(tc.name+"/protection_"+state, func(t *testing.T) {
+    c, _ := gin.CreateTestContext(httptest.NewRecorder())
+    body:=[]byte(tc.body)
+    c.Request=httptest.NewRequest("POST","/v1/responses",bytes.NewReader(body))
+    c.Request.Header.Set("User-Agent","relay-regression/1.0")
+    a:=mode1TestAccount(1)
+    a.Credentials=map[string]any{"access_token":"dummy","chatgpt_account_id":"dummy"}
+    a.Extra["openai_passthrough"]=false
+    a.Extra[AntiDegradeMarkerExtraKey].(map[string]any)["enabled"]=enabled
+    u:=&mode1ForwardRecorder{httpUpstreamRecorder:httpUpstreamRecorder{resp:&http.Response{StatusCode:200,Header:http.Header{"Content-Type":[]string{"text/event-stream"}},Body:io.NopCloser(strings.NewReader("data: {\"type\":\"response.output_text.delta\",\"delta\":\"OK\"}\n\ndata: {\"type\":\"response.completed\",\"response\":{\"id\":\"test\",\"status\":\"completed\",\"output\":[]}}\n\ndata: [DONE]\n\n"))}}}
+    cfg:=&config.Config{}; cfg.Gateway.TLSFingerprint.Enabled=true
+    gw:=&OpenAIGatewayService{cfg:cfg,httpUpstream:u,toolCorrector:NewCodexToolCorrector()}
+    _,err:=gw.Forward(context.Background(),c,a,body)
+    if enabled {
+     require.ErrorContains(t,err,"模式一阻止")
+     require.Nil(t,u.lastReq,"failure must occur before any upstream request")
+     t.Logf("REPRODUCED: protection=%v upstream_attempted=false error=%v",enabled,err)
+    } else {
+     require.NoError(t,err)
+     require.NotNil(t,u.lastReq)
+     t.Log("CONTROL: protection=false upstream_attempted=true")
+    }
+   })
+  }
+ }
+}

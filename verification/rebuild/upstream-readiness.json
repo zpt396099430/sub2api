@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-09-12T04:07:52.086417+00:00",
+  "source": "live PostgreSQL count query and Docker inspect on the authorized test server",
+  "account_counts": {
+    "accounts": 0,
+    "active_accounts": 0
+  },
+  "app_health": "healthy",
+  "image": "sha256:6b7380ff03f2334f6bc46fd33b2a5b2c5f126259cc5addeb9c0b9c11040d107b",
+  "real_upstream_ab": "not_run",
+  "reason": "No imported upstream accounts"
+}

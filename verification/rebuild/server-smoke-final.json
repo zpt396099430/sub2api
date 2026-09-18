@@ -1,0 +1,81 @@
+{
+  "scope": "server HTTP/auth/database-backed user APIs; no upstream account call",
+  "checks": [
+    {
+      "name": "health",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "public_settings",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "frontend_shell",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "keys_require_auth",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "gateway_requires_key",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "admin_login",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "/api/v1/user/profile",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "/api/v1/keys",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "/api/v1/groups/available",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "/api/v1/usage/dashboard/stats",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "/api/v1/usage/dashboard/trend",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "/api/v1/usage/dashboard/models",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "/api/v1/usage?page=1&page_size=5",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "/api/v1/user/platform-quotas",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "admin_confirmation_state_readable",
+      "passed": true,
+      "status": 200
+    }
+  ],
+  "passed": true
+}

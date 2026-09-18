@@ -1,0 +1,98 @@
+{
+  "base_url": "http://172.19.0.4:8080",
+  "checks": [
+    {
+      "name": "health",
+      "passed": true
+    },
+    {
+      "name": "frontend_shell",
+      "passed": true
+    },
+    {
+      "name": "frontend_assets_listed",
+      "passed": true
+    },
+    {
+      "name": "asset:/assets/index-YlmkL7lT.js",
+      "passed": true
+    },
+    {
+      "name": "asset:/assets/vendor-vue-Dqo0VzEI.js",
+      "passed": true
+    },
+    {
+      "name": "asset:/assets/vendor-i18n-BTTX61uU.js",
+      "passed": true
+    },
+    {
+      "name": "asset:/assets/vendor-misc-Bzb2Oe2Z.js",
+      "passed": true
+    },
+    {
+      "name": "asset:/assets/vendor-misc-DB0Q8XAf.css",
+      "passed": true
+    },
+    {
+      "name": "asset:/assets/index-DZg79KpJ.css",
+      "passed": true
+    },
+    {
+      "name": "unauthenticated:/api/v1/keys",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "unauthenticated:/api/v1/admin/accounts/1/traffic-control",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "unauthenticated:/api/v1/admin/groups/1/stats",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "gateway_requires_api_key",
+      "passed": true,
+      "status": 401
+    },
+    {
+      "name": "existing_admin_login",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "authenticated_profile",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "traffic_control_read",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "real_group_stats",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "group_stats_invalid_date",
+      "passed": true,
+      "status": 400
+    },
+    {
+      "name": "test_center:/api/v1/admin/intelligent-tests/accounts",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "name": "test_center:/api/v1/admin/intelligent-tests/settings",
+      "passed": true,
+      "status": 200
+    }
+  ],
+  "passed": true,
+  "scope": "health, assets, auth, read-only admin APIs; no model request with real credentials"
+}

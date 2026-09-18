@@ -1,0 +1,24 @@
+{
+  "old_image": "sha256:3140765d60ec62efad35a922cbc5a1fdc4de85ea77e47b8b6ebd217dc07c50cd",
+  "old_tag": "chengchuan-relay:features-strategies-20260913",
+  "release": "/opt/chengchuan-relay/releases/optional-controls-20260915/source",
+  "new_migrations": [
+    "248_intelligent_assessment_v2.sql"
+  ],
+  "modified_migrations": [],
+  "source_files_verified": 4001,
+  "backups": {
+    "source-before.tar.gz": {
+      "bytes": 13955737,
+      "sha256": "5be39ebee2299f1602bdca96b29a93af19cca22b166755e9f4ffaafd8d6ca6e7"
+    },
+    "database-before.dump": {
+      "bytes": 4214860,
+      "sha256": "7878ee533dad5b22f0978c48d90d4bac731bf5c8c3f0b98df18fe36ac4436a39"
+    },
+    "app-data.tar.gz": {
+      "bytes": 3366731,
+      "sha256": "29ba1363ee5a067135cac694e2c8ccd00555f3e5e7fd5f787be97d0ba93d7a71"
+    }
+  }
+}

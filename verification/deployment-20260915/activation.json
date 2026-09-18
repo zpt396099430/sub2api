@@ -1,0 +1,12 @@
+{
+  "version": "optional-controls-20260915",
+  "image": "sha256:bc0a061f84b8be362b443c3ff2e7fdff255b5ea4a80cb907961ea742192c8b19",
+  "healthy": true,
+  "account_configuration_preserved": true,
+  "postgres_and_redis_not_recreated": true,
+  "migration_applied": true,
+  "strict_rpm_enabled_accounts": 0,
+  "adaptive_enabled_accounts": 0,
+  "elapsed_seconds": 8.3,
+  "url": "https://juhe.pub"
+}

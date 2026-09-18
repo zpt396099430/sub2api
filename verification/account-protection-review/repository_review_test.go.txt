@@ -1,0 +1,40 @@
+package repository
+
+import (
+    "context"
+    "encoding/json"
+    "testing"
+
+    "entgo.io/ent/dialect"
+    entsql "entgo.io/ent/dialect/sql"
+    "github.com/DATA-DOG/go-sqlmock"
+    dbent "github.com/Wei-Shaw/sub2api/ent"
+    "github.com/Wei-Shaw/sub2api/internal/service"
+    "github.com/stretchr/testify/require"
+)
+
+// Exercises the final protection merge with a committed row supplied by a
+// mock SQL reader. It does not claim a real PostgreSQL concurrency test.
+func TestProtectionReviewStaleEmptySnapshot(t *testing.T) {
+    for _, tt := range []struct{name string; extra map[string]any}{
+        {"no_marker_before_first_enable", nil},
+        {"explicit_false_marker_control", map[string]any{"anti_degradation":false}},
+    } {
+        t.Run(tt.name, func(t *testing.T) {
+            db, mock, err := sqlmock.New()
+            require.NoError(t, err)
+            defer db.Close()
+            client := dbent.NewClient(dbent.Driver(entsql.OpenDB(dialect.Postgres, db)))
+            current := &service.Account{ID:501, Platform:service.PlatformOpenAI, Type:service.AccountTypeOAuth, Concurrency:32}
+            service.PrepareNewAccountProtection(current)
+            raw, err := json.Marshal(current.Extra)
+            require.NoError(t, err)
+            mock.ExpectQuery("SELECT extra FROM accounts").WithArgs(int64(501)).WillReturnRows(sqlmock.NewRows([]string{"extra"}).AddRow(raw))
+            stale := &service.Account{ID:501, Platform:service.PlatformOpenAI, Type:service.AccountTypeOAuth, Concurrency:32, Extra:tt.extra}
+            require.NoError(t, preserveLockedAccountProtection(context.Background(), client, stale))
+            require.True(t, stale.AntiDegradationEnabled(), "a snapshot from before first enable must merge the committed policy before writing")
+            require.Equal(t,16,stale.Concurrency)
+            require.NoError(t,mock.ExpectationsWereMet())
+        })
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "frontend_url": "https://juhe.pub",
+  "api_base_url": "https://juhe.pub",
+  "changed_setting_keys": [
+    "api_base_url"
+  ],
+  "other_settings_preserved": true,
+  "updated_via_admin_api": true
+}

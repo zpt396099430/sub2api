@@ -1,0 +1,8 @@
+{
+  "time": "2026-09-12T03:58:27.240518+00:00",
+  "image": "sha256:6b7380ff03f2334f6bc46fd33b2a5b2c5f126259cc5addeb9c0b9c11040d107b",
+  "tag": "chengchuan-relay:verified-20260912",
+  "started": "2026-09-12T03:57:10.805529871Z",
+  "health": "healthy",
+  "temporary_user_login_status": 401
+}

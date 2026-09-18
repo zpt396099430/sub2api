@@ -1,0 +1,13 @@
+{"Time":"2026-09-12T23:40:19.5482611+08:00","Action":"start","Package":"github.com/Wei-Shaw/sub2api/internal/service"}
+{"Time":"2026-09-12T23:40:28.0515094+08:00","Action":"output","Package":"github.com/Wei-Shaw/sub2api/internal/service","Output":"2026/09/12 15:40:28 Timezone initialized: UTC (UTC offset: +00:00)\n"}
+{"Time":"2026-09-12T23:40:28.0520436+08:00","Action":"run","Package":"github.com/Wei-Shaw/sub2api/internal/service","Test":"TestIntelligentProtectedResponsesUsesStableDeviceAndIndependentSessions"}
+{"Time":"2026-09-12T23:40:28.0520436+08:00","Action":"output","Package":"github.com/Wei-Shaw/sub2api/internal/service","Test":"TestIntelligentProtectedResponsesUsesStableDeviceAndIndependentSessions","Output":"=== RUN   TestIntelligentProtectedResponsesUsesStableDeviceAndIndependentSessions\n","OutputType":"frame"}
+{"Time":"2026-09-12T23:40:28.0556384+08:00","Action":"output","Package":"github.com/Wei-Shaw/sub2api/internal/service","Test":"TestIntelligentProtectedResponsesUsesStableDeviceAndIndependentSessions","Output":"--- PASS: TestIntelligentProtectedResponsesUsesStableDeviceAndIndependentSessions (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-12T23:40:28.0556384+08:00","Action":"pass","Package":"github.com/Wei-Shaw/sub2api/internal/service","Test":"TestIntelligentProtectedResponsesUsesStableDeviceAndIndependentSessions","Elapsed":0}
+{"Time":"2026-09-12T23:40:28.0556384+08:00","Action":"run","Package":"github.com/Wei-Shaw/sub2api/internal/service","Test":"TestIntelligentProtectionRejectsLostPrompt"}
+{"Time":"2026-09-12T23:40:28.0556384+08:00","Action":"output","Package":"github.com/Wei-Shaw/sub2api/internal/service","Test":"TestIntelligentProtectionRejectsLostPrompt","Output":"=== RUN   TestIntelligentProtectionRejectsLostPrompt\n","OutputType":"frame"}
+{"Time":"2026-09-12T23:40:28.0556384+08:00","Action":"output","Package":"github.com/Wei-Shaw/sub2api/internal/service","Test":"TestIntelligentProtectionRejectsLostPrompt","Output":"--- PASS: TestIntelligentProtectionRejectsLostPrompt (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-12T23:40:28.0556384+08:00","Action":"pass","Package":"github.com/Wei-Shaw/sub2api/internal/service","Test":"TestIntelligentProtectionRejectsLostPrompt","Elapsed":0}
+{"Time":"2026-09-12T23:40:28.0561632+08:00","Action":"output","Package":"github.com/Wei-Shaw/sub2api/internal/service","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-09-12T23:40:28.060188+08:00","Action":"output","Package":"github.com/Wei-Shaw/sub2api/internal/service","Output":"ok  \tgithub.com/Wei-Shaw/sub2api/internal/service\t8.511s\n"}
+{"Time":"2026-09-12T23:40:28.060188+08:00","Action":"pass","Package":"github.com/Wei-Shaw/sub2api/internal/service","Elapsed":8.512}

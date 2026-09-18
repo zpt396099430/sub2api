@@ -1,0 +1,8 @@
+{
+  "isolated_network": "optional-release-network-20260915",
+  "migration": "248_intelligent_assessment_v2.sql",
+  "checksum": "f26f279adf0e36cf3301736f78adf8835ac9eef7fa339b221c640846e4e8846a",
+  "repeat_passed": true,
+  "business_rows_preserved": true,
+  "historical_tests_preserved": true
+}
