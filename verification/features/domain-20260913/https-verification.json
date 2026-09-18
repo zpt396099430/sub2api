@@ -1,0 +1,81 @@
+{
+  "time": "2026-09-12T20:02:44.171968+00:00",
+  "url": "https://juhe.pub",
+  "https_health": 200,
+  "login_page": 200,
+  "http_to_https": 308,
+  "tls_validation": true,
+  "certificate": {
+    "tls_version": "TLSv1.3",
+    "issuer": [
+      [
+        [
+          "countryName",
+          "US"
+        ]
+      ],
+      [
+        [
+          "organizationName",
+          "Let's Encrypt"
+        ]
+      ],
+      [
+        [
+          "commonName",
+          "YE2"
+        ]
+      ]
+    ],
+    "subject_alt_names": [
+      [
+        "DNS",
+        "juhe.pub"
+      ]
+    ],
+    "not_after": "Dec 11 19:00:08 2026 GMT"
+  },
+  "dns": {
+    "A": [
+      {
+        "name": "juhe.pub.",
+        "type": 1,
+        "TTL": 300,
+        "data": "107.149.55.60"
+      }
+    ],
+    "AAAA": []
+  },
+  "assets": [
+    {
+      "path": "/assets/index-CmOAEtyI.js",
+      "http": 200
+    },
+    {
+      "path": "/assets/vendor-vue-Dqo0VzEI.js",
+      "http": 200
+    },
+    {
+      "path": "/assets/vendor-i18n-BTTX61uU.js",
+      "http": 200
+    },
+    {
+      "path": "/assets/vendor-misc-Bzb2Oe2Z.js",
+      "http": 200
+    }
+  ],
+  "new_admin_login_https": 200,
+  "admin_me_https": 200,
+  "admin_email": "thefinaleye@outlook.com",
+  "admin_role": "super_admin",
+  "accounts_api_https": 200,
+  "test_settings_api_https": 200,
+  "audit": {
+    "id": 56,
+    "action": "admin.users.update",
+    "method": "PUT",
+    "path": "/api/v1/admin/users/:id",
+    "status_code": 200,
+    "password_redacted": true
+  }
+}

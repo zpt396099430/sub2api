@@ -1,0 +1,15 @@
+{
+  "packages": {
+    "passed": [
+      "github.com/Wei-Shaw/sub2api/internal/repository",
+      "github.com/Wei-Shaw/sub2api/internal/service"
+    ],
+    "failed": []
+  },
+  "tests": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0
+  },
+  "failures": []
+}

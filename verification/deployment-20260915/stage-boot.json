@@ -1,0 +1,6 @@
+{
+  "health": true,
+  "internal_network": true,
+  "image": "sha256:bc0a061f84b8be362b443c3ff2e7fdff255b5ea4a80cb907961ea742192c8b19",
+  "migration_applied": true
+}

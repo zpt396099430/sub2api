@@ -1,0 +1,15 @@
+{
+  "packages": {
+    "passed": [
+      "github.com/Wei-Shaw/sub2api/internal/server/middleware",
+      "github.com/Wei-Shaw/sub2api/internal/service"
+    ],
+    "failed": []
+  },
+  "tests": {
+    "passed": 686,
+    "failed": 0,
+    "skipped": 0
+  },
+  "failures": []
+}

@@ -1,0 +1,22 @@
+{
+  "target": "http://107.149.55.60:18080",
+  "fixture_only": true,
+  "checks": [
+    {
+      "name": "管理员真实登录",
+      "passed": true
+    },
+    {
+      "name": "保留账号列表并显示管理标签与防降智",
+      "passed": true
+    },
+    {
+      "name": "关闭保护需要确认且取消保持开启",
+      "passed": true
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "passed": false,
+  "error": "The expression evaluated to a falsy value:\n\n  assert(await page.getByRole('heading', { name: '智能测试中心', exact: true }).isVisible())\n"
+}

@@ -1,0 +1,16 @@
+{
+  "database": "relay_upgrade_test",
+  "original_tables_compared": 104,
+  "preserved": true,
+  "repeat_passed": true,
+  "roles_before": "admin:1\nuser:1",
+  "roles_after": "super_admin:1\nuser:1",
+  "user_password_balance_fields_preserved": true,
+  "aggregate_before_sha256": "8581fa3d0d9066f67c1e079c70359a6a8dd04177ef2fd9ff9a768b4f1b0a56e8",
+  "aggregate_after_sha256": "8581fa3d0d9066f67c1e079c70359a6a8dd04177ef2fd9ff9a768b4f1b0a56e8",
+  "migration_files": [
+    "245_user_cleanup.sql",
+    "246_account_protection_roles.sql",
+    "247_intelligent_tests.sql"
+  ]
+}

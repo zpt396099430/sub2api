@@ -1,0 +1,12 @@
+[
+  {
+    "name": "juhe.pub",
+    "type": 28,
+    "ip": "fdfe:dcba:9876::b"
+  },
+  {
+    "name": "juhe.pub",
+    "type": 1,
+    "ip": "198.18.0.12"
+  }
+]

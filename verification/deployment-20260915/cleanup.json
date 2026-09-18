@@ -1,0 +1,9 @@
+{
+  "removed_temporary_containers": [
+    "optional-release-app-20260915",
+    "optional-release-db-20260915",
+    "optional-release-redis-20260915"
+  ],
+  "production_untouched": true,
+  "backup_retained": true
+}

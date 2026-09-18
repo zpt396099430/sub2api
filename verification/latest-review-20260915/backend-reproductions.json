@@ -1,0 +1,36 @@
+{
+  "packages": {
+    "passed": [],
+    "failed": [
+      "github.com/Wei-Shaw/sub2api/internal/repository",
+      "github.com/Wei-Shaw/sub2api/internal/service"
+    ]
+  },
+  "tests": {
+    "passed": 0,
+    "failed": 5,
+    "skipped": 0
+  },
+  "failures": [
+    {
+      "test": "github.com/Wei-Shaw/sub2api/internal/repository/TestLatestReviewLoweredRPMReturnsEarliestActualAdmission",
+      "output": "=== RUN   TestLatestReviewLoweredRPMReturnsEarliestActualAdmission\n    latest_review_external_test.go:16: \n        \tError Trace:\tC:/Users/30214/Desktop/sub2本地/sub2新站/backend/internal/repository/latest_review_external_test.go:16\n        \tError:      \tNot equal: \n        \t            \texpected: 50s\n        \t            \tactual  : 30s\n        \tTest:       \tTestLatestReviewLoweredRPMReturnsEarliestActualAdmission\n        \tMessages:   \tall three old requests must age out before the new cap of 1 permits another request\n--- FAIL: TestLatestReviewLoweredRPMReturnsEarliestActualAdmission (0.00s)\n"
+    },
+    {
+      "test": "github.com/Wei-Shaw/sub2api/internal/repository/TestLatestReviewObserveStalePlanRejectionIsReal",
+      "output": "=== RUN   TestLatestReviewObserveStalePlanRejectionIsReal\n    latest_review_external_test.go:23: \n        \tError Trace:\tC:/Users/30214/Desktop/sub2本地/sub2新站/backend/internal/repository/latest_review_external_test.go:23\n        \tError:      \tShould be true\n        \tTest:       \tTestLatestReviewObserveStalePlanRejectionIsReal\n        \tMessages:   \tediting an observation threshold should not stop an existing observation-only session\n--- FAIL: TestLatestReviewObserveStalePlanRejectionIsReal (0.00s)\n"
+    },
+    {
+      "test": "github.com/Wei-Shaw/sub2api/internal/service/TestLatestReviewWSFailedDoneCounts429",
+      "output": "=== RUN   TestLatestReviewWSFailedDoneCounts429\n    latest_review_external_test.go:17: \n        \tError Trace:\tC:/Users/30214/Desktop/sub2本地/sub2新站/backend/internal/service/latest_review_external_test.go:17\n        \tError:      \tNot equal: \n        \t            \texpected: 429\n        \t            \tactual  : 499\n        \tTest:       \tTestLatestReviewWSFailedDoneCounts429\n        \tMessages:   \tfailed response.done contains a real rate limit; adaptation must see it\n--- FAIL: TestLatestReviewWSFailedDoneCounts429 (0.00s)\n"
+    },
+    {
+      "test": "github.com/Wei-Shaw/sub2api/internal/service/TestLatestReviewDisabledPoliciesIgnoreInactiveValues",
+      "output": "=== RUN   TestLatestReviewDisabledPoliciesIgnoreInactiveValues\n    latest_review_external_test.go:22: \n        \tError Trace:\tC:/Users/30214/Desktop/sub2本地/sub2新站/backend/internal/service/latest_review_external_test.go:22\n        \tError:      \tReceived unexpected error:\n        \t            \terror: code=400 reason=\"ACCOUNT_TRAFFIC_INVALID\" message=\"请检查 RPM、突发额度、并发下限、失败阈值与恢复周期；突发额度不能大于 RPM\" metadata=map[]\n        \tTest:       \tTestLatestReviewDisabledPoliciesIgnoreInactiveValues\n        \tMessages:   \tdisabling the limiter must not require repairing an inactive hidden RPM field\n--- FAIL: TestLatestReviewDisabledPoliciesIgnoreInactiveValues (0.00s)\n"
+    },
+    {
+      "test": "github.com/Wei-Shaw/sub2api/internal/service/TestLatestReviewObserveDoesNotDenyStaleAdmission",
+      "output": "=== RUN   TestLatestReviewObserveDoesNotDenyStaleAdmission\n    latest_review_external_test.go:30: \n        \tError Trace:\tC:/Users/30214/Desktop/sub2本地/sub2新站/backend/internal/service/latest_review_external_test.go:30\n        \tError:      \tReceived unexpected error:\n        \t            \tACCOUNT_TRAFFIC_LIMIT: local budget\n        \tTest:       \tTestLatestReviewObserveDoesNotDenyStaleAdmission\n        \tMessages:   \trecommendation-only mode must not block requests when the cached plan changes\n--- FAIL: TestLatestReviewObserveDoesNotDenyStaleAdmission (0.00s)\n"
+    }
+  ]
+}

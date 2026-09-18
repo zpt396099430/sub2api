@@ -1,0 +1,31 @@
+package service
+
+import (
+ "context"
+ "testing"
+ "github.com/stretchr/testify/require"
+ coderws "github.com/coder/websocket"
+)
+
+func TestLatestReviewWSFailedDoneCounts429(t *testing.T) {
+ cache := &trafficCacheStub{acquired:true}
+ inner := &trafficFrameStub{payload:[]byte(`{"type":"response.done","response":{"status":"failed","error":{"code":"rate_limit_exceeded"}}}`)}
+ policy := DefaultAccountTrafficPolicy(); policy.AdaptiveEnabled=true; policy.AdaptiveMode="automatic"
+ frame:=&accountTrafficFrameConn{inner:inner,control:NewAccountTrafficService(cache),plan:AccountTrafficPlan{AccountID:42,Policy:policy},ctx:context.Background()}
+ require.NoError(t,frame.WriteFrame(context.Background(),coderws.MessageText,[]byte(`{"type":"response.create"}`)))
+ _,_,err:=frame.ReadFrame(context.Background());require.NoError(t,err)
+ require.Equal(t,429,cache.status,"failed response.done contains a real rate limit; adaptation must see it")
+}
+
+func TestLatestReviewDisabledPoliciesIgnoreInactiveValues(t *testing.T) {
+ _,err:=ParseAccountTrafficPolicy(map[string]any{AccountTrafficPolicyKey:map[string]any{"strict_rpm_enabled":false,"rpm":0,"adaptive_enabled":false}})
+ require.NoError(t,err,"disabling the limiter must not require repairing an inactive hidden RPM field")
+}
+
+func TestLatestReviewObserveDoesNotDenyStaleAdmission(t *testing.T) {
+ cache:=&trafficCacheStub{acquired:false}
+ p:=DefaultAccountTrafficPolicy();p.AdaptiveEnabled=true
+ _,permit,err:=NewAccountTrafficService(cache).Begin(context.Background(),AccountTrafficPlan{AccountID:42,Policy:p})
+ if permit!=nil { permit.Finish(0) }
+ require.NoError(t,err,"recommendation-only mode must not block requests when the cached plan changes")
+}
