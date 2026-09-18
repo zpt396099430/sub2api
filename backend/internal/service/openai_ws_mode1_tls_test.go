@@ -170,11 +170,11 @@ func TestMode1WSConnectionPoolTransportCompatibility(t *testing.T) {
 	req := openAIWSAcquireRequest{Account: account, WSURL: "wss" + strings.TrimPrefix(server.URL, "https"), tlsProfile: profile}
 	ctx, cancel := context.WithTimeout(context.Background(), 8*time.Second)
 	defer cancel()
-	first, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0)
+	first, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0, nil)
 	require.NoError(t, err)
 	firstID := first.ConnID()
 	first.Release()
-	reused, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0)
+	reused, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0, nil)
 	require.NoError(t, err)
 	require.Equal(t, firstID, reused.ConnID())
 	require.True(t, reused.Reused())
@@ -182,20 +182,20 @@ func TestMode1WSConnectionPoolTransportCompatibility(t *testing.T) {
 	changed := profile.Clone()
 	changed.CipherSuites[0], changed.CipherSuites[1] = changed.CipherSuites[1], changed.CipherSuites[0]
 	req.tlsProfile = changed
-	rotated, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0)
+	rotated, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0, nil)
 	require.NoError(t, err)
 	require.NotEqual(t, firstID, rotated.ConnID())
 	require.False(t, rotated.Reused())
 	rotated.Release()
 	req.WSURL += "/other"
-	otherTarget, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0)
+	otherTarget, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0, nil)
 	require.NoError(t, err)
 	require.NotEqual(t, rotated.ConnID(), otherTarget.ConnID())
 	otherTarget.Release()
 	otherAccount := *account
 	otherAccount.ID = 42
 	req.Account = &otherAccount
-	other, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0)
+	other, err := pool.acquire(ctx, cloneOpenAIWSAcquireRequest(req), 0, nil)
 	require.NoError(t, err)
 	require.NotEqual(t, otherTarget.ConnID(), other.ConnID())
 	other.Release()
